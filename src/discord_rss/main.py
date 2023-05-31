@@ -4,6 +4,7 @@ from discord.ext import commands
 import os
 from dotenv import load_dotenv
 import asyncio
+from keep_alive import keep_alive
 
 load_dotenv()
 DISCORD_TOKEN = os.getenv('TOKEN', '')
@@ -26,5 +27,6 @@ async def main():
         await bot.start(DISCORD_TOKEN)
 
 if __name__ == '__main__':
+    keep_alive()
     asyncio.run(main())
 
