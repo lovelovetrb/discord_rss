@@ -1,0 +1,19 @@
+[project]
+name = "discord-rss"
+version = "0.1.0"
+description = "Add a short description here"
+authors = [
+    { name = "mizuki", email = "trombonelover8888@gmail.com" }
+]
+dependencies = ["discord.py~=2.2.3", "python-dotenv~=1.0.0", "feedparser~=6.0.10", "validators~=0.20.0", "schedule~=1.2.0", "asyncio~=3.4.3"]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+[tool.hatch.metadata]
+allow-direct-references = true
