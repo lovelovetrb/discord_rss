@@ -1,4 +1,4 @@
-# discord-rss
+# discord-rss-bot
 This is discord bot to analysis RSS and notify updates to discord
 
 # Tech
