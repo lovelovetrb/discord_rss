@@ -11,7 +11,7 @@ def parse_rss(url):
         temp['title'] = entry.title
         temp['link'] = entry.link
         feed.append(temp)
-        if(index == 4):
+        if(index == 3):
             break
     return feed
 

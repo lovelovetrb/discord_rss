@@ -97,7 +97,7 @@ class Commands(commands.Cog):
     # If no tzinfo is given then UTC is assumed.
     # TODO 時間をconfig.yamlとかから変更できたら嬉しい
     times = [ datetime.time(hour=11, minute=00, tzinfo=utc),  datetime.time(hour=18, minute=30, tzinfo=utc)]
-    @tasks.loop()
+    @tasks.loop(times)
     async def loop(self):
         urlList = self.db.getData('url')
         if len(urlList) == 0:
