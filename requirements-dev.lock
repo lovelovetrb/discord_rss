@@ -5,22 +5,42 @@
 #   pre: false
 #   features: []
 #   all-features: false
+#   with-sources: false
 
 -e file:.
 aiohttp==3.8.4
+    # via discord-py
 aiosignal==1.3.1
+    # via aiohttp
 async-timeout==4.0.2
+    # via aiohttp
 asyncio==3.4.3
+    # via discord-rss
 attrs==23.1.0
+    # via aiohttp
 charset-normalizer==3.1.0
+    # via aiohttp
 decorator==5.1.1
+    # via validators
 discord-py==2.2.3
+    # via discord-rss
 feedparser==6.0.10
+    # via discord-rss
 frozenlist==1.3.3
+    # via aiohttp
+    # via aiosignal
 idna==3.4
+    # via yarl
 multidict==6.0.4
+    # via aiohttp
+    # via yarl
 python-dotenv==1.0.0
+    # via discord-rss
 schedule==1.2.0
+    # via discord-rss
 sgmllib3k==1.0.0
+    # via feedparser
 validators==0.20.0
+    # via discord-rss
 yarl==1.9.2
+    # via aiohttp
