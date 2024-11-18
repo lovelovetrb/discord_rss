@@ -4,7 +4,6 @@ from zoneinfo import ZoneInfo
 
 import validators
 from discord.ext import commands, tasks
-from dotenv import load_dotenv
 
 import modules.parse_rss as parse_rss
 from modules.db_operate import urlDatabase as db
@@ -117,19 +116,7 @@ class Commands(commands.Cog):
 
     @tasks.loop(time=times)
     async def loop(self):
-        urlList = self.db.getData("url")
-        if len(urlList) == 0:
-            return
-        for url in urlList:
-            parsed = parse_rss.parse_rss(url[0])
-            for entry in parsed:
-                try:
-                    await self.bot.get_channel(self.CHANNEL_ID).send(entry["title"])
-                    await self.bot.get_channel(self.CHANNEL_ID).send(entry["link"])
-                    await self.bot.get_channel(self.CHANNEL_ID).send("-" * 30)
-                except Exception as e:
-                    await self.bot.get_channel(self.CHANNEL_ID).send("Can't get entry")
-                    await self.bot.get_channel(self.CHANNEL_ID).send(e)
+        await self.show()
         await self.bot.get_channel(self.CHANNEL_ID).send("Done!")
 
 
