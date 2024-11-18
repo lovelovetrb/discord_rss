@@ -13,7 +13,7 @@ from modules.db_operate import urlDatabase as db
 # TODO テストケースを書く
 class Commands(commands.Cog):
     times = [
-        datetime.time(hour=11, minute=00, tzinfo=ZoneInfo("Asia/Tokyo")),
+        datetime.time(hour=10, minute=00, tzinfo=ZoneInfo("Asia/Tokyo")),
         datetime.time(hour=18, minute=30, tzinfo=ZoneInfo("Asia/Tokyo")),
     ]
 
@@ -29,8 +29,12 @@ class Commands(commands.Cog):
         self.loop.start()
 
     @commands.command()
+    async def ping(self, ctx):
+        await ctx.send("pong")
+
+    @commands.command()
     async def add(self, ctx, url):
-        # TODO 引数が無い場合の処理を追加する
+        # TODO: 引数が無い場合の処理を追加する
         if not validators.url(url):
             await ctx.send("Invalid URL")
             return
@@ -96,7 +100,14 @@ class Commands(commands.Cog):
             parsed = parse_rss.parse_rss(url[0])
             for entry in parsed:
                 send_msg += (
-                    entry["title"] + "\n" + entry["link"] + "\n" + "-" * 30 + "\n"
+                    entry["title"]
+                    + "\n"
+                    + "<"
+                    + entry["link"]
+                    + ">"
+                    + "\n"
+                    + "-" * 30
+                    + "\n"
                 )
         try:
             await ctx.send(send_msg)
